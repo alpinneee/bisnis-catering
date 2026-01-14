@@ -1,146 +1,273 @@
-# Bisnis Catering "Nama Catering Anda"
+# Bisnis Catering — Website (Next.js + Tailwind CSS)
 
-Selamat datang di repository resmi bisnis catering "Nama Catering Anda". File ini berisi informasi lengkap tentang layanan catering, paket, cara pemesanan, kebijakan, dan kontak. Gunakan README ini sebagai panduan cepat untuk pelanggan atau tim internal.
+README ini menjelaskan spesifikasi, struktur, dan panduan pengembangan untuk website bisnis catering yang dibangun dengan Next.js dan Tailwind CSS. Dokumen ini ditujukan untuk pengembang yang akan membangun, menjalankan, dan menerapkan situs.
 
----
+## Ringkasan proyek
+Website ini menyajikan:
+- Halaman landing / home yang menarik
+- Daftar paket catering dan rincian menu
+- Form pemesanan / booking (dengan validasi)
+- Halaman testimonial dan galeri foto
+- Dashboard admin sederhana (opsional) untuk mengelola pesanan
+- SEO dasar, performa, dan aksesibilitas
 
-## Tentang Kami
-"Nama Catering Anda" menyediakan layanan catering profesional untuk berbagai acara: acara kantor, pernikahan, ulang tahun, arisan, meeting, dan acara komunitas. Kami mengutamakan rasa, kebersihan, ketepatan waktu, dan pelayanan yang ramah.
-
-- Lokasi operasional: Kota/Kabupaten Anda (sebutkan cakupan wilayah)
-- Jam operasional: Senin–Minggu, 08:00–18:00 (atau sesuaikan)
-- Tahun berdiri: 20XX
-
----
-
-## Layanan Kami
-- Catering harian (box lunch, prasmanan kecil)
-- Catering acara besar (prasmanan, buffet, paket prasmanan lengkap)
-- Paket prasmanan premium (termasuk dekorasi meja, waiter)
-- Coffee break & snack box
-- Antar jemput makanan (delivery & setup)
-- Layanan katering khusus diet (vegetarian, halal, bebas gluten, alergi)
+Tech stack utama:
+- Next.js (React + SSG/SSR/ISR)
+- Tailwind CSS untuk styling utility-first
+- TypeScript (direkomendasikan) atau JavaScript
+- API endpoint serverless (Next API Routes) atau backend terpisah
+- Penyimpanan gambar: lokal / Cloud (S3, Cloudinary)
+- Deploy: Vercel (direkomendasikan) atau Netlify
 
 ---
 
-## Contoh Menu & Paket (Contoh)
-Harga hanya contoh — sesuaikan dengan biaya operasional dan wilayah.
-
-1. Paket Ekonomis
-   - Menu: Nasi putih, Ayam goreng, Sayur tumis, Sambal, Buah potong
-   - Porsi: 50 orang
-   - Harga: Rp 25.000/orang
-   - Cocok untuk: rapat, pengajian, acara kecil
-
-2. Paket Standar
-   - Menu: Nasi uduk/nasi kuning, Ayam bakar, Tahu/tempe, Tumis sayur, Lalapan, Puding
-   - Porsi: 50 orang
-   - Harga: Rp 40.000/orang
-   - Cocok untuk: kondangan sederhana, acara keluarga
-
-3. Paket Premium
-   - Menu: Nasi liwet/beras kuning, Daging rendang, Ikan panggang, Aneka sayuran, Dessert
-   - Porsi: 50 orang
-   - Harga: Rp 75.000/orang
-   - Termasuk: pengaturan meja, 2 orang waiter (opsional)
-   - Cocok untuk: pernikahan, acara perusahaan
-
-4. Coffee Break / Snack Box
-   - Paket mulai dari Rp 15.000/pax
-   - Isi: kue, kopi/teh, air mineral
-
-Catatan: Harga final tergantung jumlah porsi, lokasi pengantaran, kebutuhan peralatan, dan pengaturan tempat.
+## Fitur & Halaman Utama
+- Home: hero, keunggulan, CTA
+- Menu / Paket: daftar paket, filter berdasarkan kategori / harga
+- Detail Paket: menu, harga per porsi, galeri, opsi tambah layanan (dekor, waiter)
+- Booking: form pemesanan (nama, kontak, tanggal, jumlah tamu, alamat, preferensi)
+- FAQ & Kebijakan: pembatalan, pembayaran, jangkauan pengantaran
+- Galeri: foto acara & makanan
+- Kontak: telepon, WhatsApp, email, peta lokasi
+- (Opsional) Admin: lihat & konfirmasi pesanan, export CSV
 
 ---
 
-## Cara Pemesanan (Langkah mudah)
-1. Hubungi kami melalui:
-   - Telepon/WhatsApp: +62-812-xxx-xxxx
-   - Email: pesan@namacatering.com
-   - Instagram/Facebook: @namacatering (opsional)
-2. Sampaikan detail acara:
-   - Tanggal & waktu acara
-   - Lokasi lengkap
-   - Jumlah tamu (estimasi)
-   - Tipe paket/menu yang diinginkan
-   - Preferensi diet / alergi
-   - Kebutuhan tambahan (dekor, meja, waiter)
-3. Terima konfirmasi penawaran (quote) dari kami.
-4. Pembayaran deposit (mis. 30% dari total) untuk mengunci tanggal.
-5. Pelunasan dilakukan H-1 atau sesuai kesepakatan.
-6. Tim kami datang HARI-H untuk pengantaran dan/atau setup.
+## Struktur Direktori (disarankan)
+- /app atau /pages (Next.js 13+: gunakan app router jika diinginkan)
+- /components — reusable UI (Hero, Card, Navbar, Footer, Modal, Form)
+- /layouts — layout global / halaman
+- /lib — helper, api clients, util
+- /hooks — custom hooks (useForm, useFetch)
+- /styles — konfigurasi Tailwind (tailwind.config.js), global CSS
+- /public — gambar statis, favicon
+- /pages/api atau /app/api — endpoint serverless
+- /data — sample data / mock (opsional)
+- /tests — unit / e2e tests (opsional)
+
+Contoh:
+```
+/components
+  /ui
+  Navbar.tsx
+  Footer.tsx
+/pages
+  index.tsx
+  menu/[slug].tsx
+  booking.tsx
+  api/
+    orders.ts
+/styles
+  globals.css
+tailwind.config.js
+next.config.js
+```
 
 ---
 
-## Ketentuan Pembayaran & Pembatalan
-- Metode pembayaran: Transfer bank, OVO/DANA/Gopay (sesuaikan)
-- Deposit 30% untuk konfirmasi booking (bisa disesuaikan)
-- Pembatalan:
-  - Pembatalan >14 hari sebelum acara: pengembalian deposit 100%
-  - Pembatalan 7–14 hari: pengembalian deposit 50%
-  - Pembatalan <7 hari: deposit tidak dikembalikan (kecuali ada situasi darurat — akan dibahas case-by-case)
+## Styling (Tailwind CSS)
+Rekomendasi setup Tailwind:
+1. Install
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+2. tailwind.config.js (contoh minimal)
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./app/**/*.{js,ts,jsx,tsx}','./pages/**/*.{js,ts,jsx,tsx}','./components/**/*.{js,ts,jsx,tsx}'],
+  theme: { extend: {} },
+  plugins: [],
+}
+```
+3. globals.css
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* custom utilities / overrides */
+```
+4. Rekomendasi UI patterns:
+- Variants untuk tombol (primary/secondary)
+- Token warna di tailwind.config.js untuk brand
+- Utility classes untuk responsif dan aksesibilitas
 
 ---
 
-## Kebersihan & Keamanan Pangan
-- Semua masakan dibuat di dapur bersertifikat kebersihan internal.
-- Bahan baku segar, supplier terpercaya.
-- Staf memakai sarung tangan, masker, dan mematuhi prosedur kebersihan.
-- Pengolahan makanan mengikuti standar keamanan pangan lokal.
+## Setup Pengembangan (local)
+1. Clone repo
+```
+git clone https://github.com/<owner>/<repo>.git
+cd <repo>
+```
+2. Install dependensi
+```
+npm install
+# atau
+yarn
+```
+3. Jalankan development server
+```
+npm run dev
+# atau
+yarn dev
+```
+Buka http://localhost:3000
+
+Script npm (contoh di package.json):
+```json
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write ."
+  }
+}
+```
 
 ---
 
-## Kustomisasi & Pantangan Makanan
-- Kami menerima permintaan menu kustom (masakan daerah, menu internasional).
-- Untuk alergi makanan atau pantangan agama, informasikan detail saat pemesanan.
-- Menu vegetarian/vegan/halal tersedia atas permintaan.
+## Environment Variables (contoh)
+Buat file `.env.local`:
+```
+NEXT_PUBLIC_API_URL=https://api.example.com
+NEXT_PUBLIC_GOOGLE_ANALYTICS=G-XXXXXXX
+MAIL_TO=orders@namacatering.com
+NEXTAUTH_URL=http://localhost:3000
+```
+- Gunakan prefix NEXT_PUBLIC_ untuk variabel yang dipakai di klien.
+- Jangan commit kunci/secret ke repo publik.
 
 ---
 
-## Jangkauan Pengantaran & Setup
-- Wilayah jangkauan: (sebutkan kota / radius km). Untuk luar wilayah, biaya antar tambahan berlaku.
-- Kami menyediakan opsi:
-  - Delivery only (antar makanan)
-  - Delivery + Setup (pengaturan buffet/meja)
-  - Full service (termasuk pelayanan, peralatan, cleaning setelah acara)
+## Form Pemesanan & Validasi
+- Gunakan library form seperti react-hook-form + zod / yup untuk validasi.
+- Validasi di client dan server (API route).
+- Setelah submit, simpan pesanan ke DB (Firestore, Supabase, atau backend Anda) dan kirim konfirmasi via email/WhatsApp.
+
+Contoh alur:
+1. User isi form -> client validates -> POST /api/orders
+2. API menyimpan data -> mengirim email konfirmasi & notifikasi WA (via provider)
+3. Tampilkan halaman sukses / nomor order
 
 ---
 
-## Testimoni Pelanggan
-"Kualitas makanan enak, tepat waktu, dan service ramah!" — Nama Pelanggan
-(Tambahkan testimoni pelanggan nyata di sini)
+## Gambar & Performansi
+- Gunakan Next/Image (jika memakai Next.js) untuk optimasi gambar.
+- Simpan gambar besar di CDN (Cloudinary, S3) dan gunakan lazy loading.
+- Aktifkan caching dan incremental static regeneration (ISR) untuk halaman menu agar cepat.
 
 ---
 
-## FAQ (Pertanyaan yang Sering Diajukan)
-- Q: Berapa minimal pemesanan?
-  A: Minimal pemesanan biasanya 20 porsi (atau sesuaikan).
-- Q: Bisa catering untuk 500+ orang?
-  A: Bisa, dengan koordinasi lebih awal untuk logistik dan stok.
-- Q: Apakah ada biaya tambahan untuk lokasi jauh?
-  A: Ya, biaya transportasi akan ditambahkan untuk jarak di luar jangkauan standar.
+## SEO & Social Sharing
+- Set meta tags per halaman (title, description, og:image).
+- Gunakan struktur schema.org JSON-LD untuk bisnis lokal (LocalBusiness) — termasuk alamat, jam operasional, nomor telepon.
+- Sitemap & robots.txt: generate otomatis pada build.
 
 ---
 
-## Kontak & Booking
-- Telepon / WhatsApp: +62-812-xxx-xxxx
-- Email: pesan@namacatering.com
-- Instagram: [@namacatering](https://instagram.com/namacatering)
-- Alamat kantor / dapur: Jalan Contoh No. 123, Kota Anda
+## Aksesibilitas & Internasionalisasi
+- Pastikan kontras warna cukup, elemen fokus teratur.
+- Gunakan semantic HTML (button, nav, header, main, footer).
+- Pertimbangkan i18n/locale jika target pengguna multi-bahasa (Next.js i18n routing).
 
 ---
 
-## Pengelolaan Repo (Opsional — Untuk Tim)
-Jika repository ini digunakan untuk menyimpan aset bisnis (menu, foto, dokumen), berikut beberapa panduan singkat:
-- Tambah foto menu di folder `/assets/photos/`
-- Update `menu.md` untuk perubahan menu harga
-- Gunakan issues untuk permintaan perubahan dan project board untuk manajemen pesanan
+## Testing & Quality
+- Linting: ESLint + Prettier
+- Unit tests: Jest + React Testing Library (opsional)
+- E2E tests: Playwright / Cypress (opsional)
+- CI: configure GitHub Actions untuk build & lint sebelum merge
+
+Contoh GitHub Action: build & test pada push ke main.
 
 ---
 
-## Lisensi
-Hak cipta © 20XX Nama Catering Anda. Semua hak dilindungi. Untuk penggunaan konten dari repo ini, hubungi pemilik.
+## Deployment
+Direkomendasikan: Vercel
+- Branch utama otomatis deploy
+- Set environment variables di dashboard Vercel
+- Enable preview deploys untuk PR
+
+Alternatif: Netlify (menggunakan Next.js adapter) atau Docker.
 
 ---
 
-Terima kasih telah memilih "Nama Catering Anda". Kami siap membantu menjadikan acara Anda berkesan dengan cita rasa dan pelayanan terbaik.
+## Admin / Dashboard (opsional)
+- Protected route dengan NextAuth.js atau sistem auth lain
+- View pesanan, filter berdasarkan status, export CSV, ubah status (confirmed / cancelled)
+- Notifikasi via email / WhatsApp saat pesanan masuk
+
+---
+
+## Panduan UI & Konten
+- Gunakan foto berkualitas tinggi untuk menu & acara
+- Sediakan template menu / PDF yang bisa diunduh
+- Testimoni: tampilkan nama & event singkat + foto (opsional)
+- CTA jelas pada setiap halaman: Pesan Sekarang / Hubungi Kami
+
+---
+
+## Checklist sebelum go-live
+- [ ] Semua halaman responsif (mobile-first)
+- [ ] Meta tags & OG untuk setiap halaman
+- [ ] Form pemesanan teruji & email konfirmasi berfungsi
+- [ ] Backup gambar & data
+- [ ] Cek kebijakan privasi & syarat layanan (jika diperlukan)
+
+---
+
+## Contoh Konfigurasi Tailwind & Next (referensi singkat)
+tailwind.config.js:
+```js
+module.exports = {
+  content: ['./app/**/*.{ts,tsx,js,jsx}','./components/**/*.{ts,tsx,js,jsx}'],
+  theme: { extend: {
+    colors: {
+      brand: {
+        50: '#FFF8F0',
+        500: '#D97706',
+      }
+    }
+  }},
+  plugins: [],
+}
+```
+
+next.config.js (contoh jika menggunakan domain image eksternal):
+```js
+module.exports = {
+  images: {
+    domains: ['res.cloudinary.com', 'images.unsplash.com'],
+  },
+}
+```
+
+---
+
+## Contributing
+- Gunakan branch feature/xxx untuk fitur baru
+- Buka PR dengan deskripsi & checklist perubahan
+- Sertakan screenshot atau link preview jika ada perubahan UI
+- Ikuti aturan coding style (ESLint + Prettier)
+
+---
+
+## License & Credits
+- Hak cipta © YYYY Nama Catering Anda
+- Lisensi: MIT (sesuaikan jika perlu)
+
+---
+
+## Kontak
+- Pemilik / Admin: Nama Pemilik
+- Email: orders@namacatering.com
+- WhatsApp: +62-812-xxx-xxxx
+
+---
+
+Butuh contoh halaman atau komponen starter (Next.js + Tailwind)? Saya bisa buatkan template dasar (Home, Menu, Booking form) dalam TypeScript jika Anda mau — sebutkan preferensi (app/pages router, TypeScript/JS, dan apakah ingin admin). 
