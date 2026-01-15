@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catering Delicious - Layanan Catering Terbaik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Catering Delicious</h1>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Layanan Catering Terpercaya</h2>
+                <p>Menyajikan hidangan lezat untuk acara spesial Anda</p>
+                <a href="#kontak" class="btn">Pesan Sekarang</a>
+            </div>
+        </section>
+
+        <section id="menu" class="menu-section">
+            <h2>Menu Unggulan</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Paket Nasi Box</h3>
+                    <p>Nasi putih, ayam goreng, sayur, kerupuk</p>
+                    <span class="price">Rp 15.000</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Paket Prasmanan</h3>
+                    <p>Nasi, 3 lauk, sayur, buah, minuman</p>
+                    <span class="price">Rp 25.000</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Paket Snack Box</h3>
+                    <p>Kue, roti, minuman, buah</p>
+                    <span class="price">Rp 12.000</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="layanan" class="services">
+            <h2>Layanan Kami</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>Catering Acara</h3>
+                    <p>Melayani catering untuk berbagai acara seperti pernikahan, ulang tahun, dan acara kantor</p>
+                </div>
+                <div class="service-item">
+                    <h3>Delivery Order</h3>
+                    <p>Layanan antar makanan langsung ke lokasi Anda dengan tepat waktu</p>
+                </div>
+                <div class="service-item">
+                    <h3>Custom Menu</h3>
+                    <p>Menu dapat disesuaikan dengan kebutuhan dan budget Anda</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tentang" class="about">
+            <h2>Tentang Kami</h2>
+            <p>Catering Delicious telah melayani berbagai acara selama lebih dari 5 tahun. Kami berkomitmen menyajikan makanan berkualitas dengan cita rasa yang lezat dan pelayanan yang memuaskan.</p>
+        </section>
+
+        <section id="kontak" class="contact">
+            <h2>Hubungi Kami</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Alamat</h3>
+                    <p>Jl. Raya Catering No. 123, Jakarta</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Telepon</h3>
+                    <p>0812-3456-7890</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>info@cateringdelicious.com</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Catering Delicious. Semua hak dilindungi.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+    </script>
+</body>
+</html>
