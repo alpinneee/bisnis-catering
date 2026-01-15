@@ -2,6 +2,9 @@
 
 Website bisnis catering sederhana yang dibuat dengan HTML dan CSS.
 
+## Live Demo
+Website dapat diakses di: https://alpinneee.github.io/bisnis-catering
+
 ## Cara Hosting di GitHub Pages
 
 ### 1. Buat Repository GitHub
@@ -45,6 +48,7 @@ web-catering/
 
 ## Fitur Website
 - ✅ Responsif untuk mobile dan desktop
+- ✅ Hamburger menu untuk mobile
 - ✅ Navigasi smooth scroll
 - ✅ Section menu dengan harga
 - ✅ Informasi layanan
